@@ -1,0 +1,48 @@
+\e[7m==================================\e[0m
+\e[7m          Cleaning up...          \e[0m
+\e[7m==================================\e[0m
+-DORCA_NOC_HEIGHT=3 -DORCA_NOC_WIDTH=2 -DORCA_EPOCH_LENGTH=2000000 -DNETBRIDGE_ENABLE_LOG_INPUT -DNETBRIDGE_ENABLE_LOG_OUTPUT -DNETSOCKET_CLIENT_ADDRESS="127.0.0.1" -DNETSOCKET_CLIENT_PORT=8888 -DNETSOCKET_SERVER_ADDRESS="127.0.0.1" -DNETSOCKET_SERVER_PORT=9999 -DBUFFER_CAPACITY=8 -DMEMORY_ENABLE_COUNTERS -DHFRISCV_ENABLE_COUNTERS -DROUTER_ENABLE_COUNTERS
+\e[7m==================================\e[0m
+make[1]: Entering directory '/home/paulo/ursa_new/ursa/simulator'
+rm -rf ./bin/*.o ./bin/*.a
+make[1]: Leaving directory '/home/paulo/ursa_new/ursa/simulator'
+make[1]: Entering directory '/home/paulo/ursa_new/ursa/models'
+rm -rf bin/*.a 	rm -rf bin/*.o
+make[1]: Leaving directory '/home/paulo/ursa_new/ursa/models'
+make[1]: Entering directory '/home/paulo/ursa_new/ursa/platforms/orca-dma'
+rm -rf ./bin/orca-dma.exe
+make[1]: Leaving directory '/home/paulo/ursa_new/ursa/platforms/orca-dma'
+make[1]: Entering directory '/home/paulo/ursa_new/ursa/software'
+rm -rf *.o *~ *.elf *.bin *.cnt *.lst *.sec *.txt *.a
+make[1]: Leaving directory '/home/paulo/ursa_new/ursa/software'
+make[1]: Entering directory '/home/paulo/ursa_new/ursa/tools/orca-udptest'
+rm -rf ./bin/*.exe ./bin/*.o ./bin/*.a
+make[1]: Leaving directory '/home/paulo/ursa_new/ursa/tools/orca-udptest'
+\e[7m==================================\e[0m
+\e[7m     Building URSA's libsim       \e[0m
+\e[7m==================================\e[0m
+make -C /home/paulo/ursa_new/ursa/simulator -j 8
+make[1]: Entering directory '/home/paulo/ursa_new/ursa/simulator'
+g++ -I./include -c  -DORCA_NOC_HEIGHT=3 -DORCA_NOC_WIDTH=2 -DORCA_EPOCH_LENGTH=2000000 -DNETBRIDGE_ENABLE_LOG_INPUT -DNETBRIDGE_ENABLE_LOG_OUTPUT -DNETSOCKET_CLIENT_ADDRESS=\"127.0.0.1\" -DNETSOCKET_CLIENT_PORT=8888 -DNETSOCKET_SERVER_ADDRESS=\"127.0.0.1\" -DNETSOCKET_SERVER_PORT=9999 -DBUFFER_CAPACITY=8 -DMEMORY_ENABLE_COUNTERS -DHFRISCV_ENABLE_COUNTERS -DROUTER_ENABLE_COUNTERS -Wall -Wextra -Werror -g -std=c++17 -O3 -march=native -mtune=native src/Event.cpp -o bin/Event.o 
+g++ -I./include -c  -DORCA_NOC_HEIGHT=3 -DORCA_NOC_WIDTH=2 -DORCA_EPOCH_LENGTH=2000000 -DNETBRIDGE_ENABLE_LOG_INPUT -DNETBRIDGE_ENABLE_LOG_OUTPUT -DNETSOCKET_CLIENT_ADDRESS=\"127.0.0.1\" -DNETSOCKET_CLIENT_PORT=8888 -DNETSOCKET_SERVER_ADDRESS=\"127.0.0.1\" -DNETSOCKET_SERVER_PORT=9999 -DBUFFER_CAPACITY=8 -DMEMORY_ENABLE_COUNTERS -DHFRISCV_ENABLE_COUNTERS -DROUTER_ENABLE_COUNTERS -Wall -Wextra -Werror -g -std=c++17 -O3 -march=native -mtune=native src/Model.cpp -o bin/Model.o 
+g++ -I./include -c  -DORCA_NOC_HEIGHT=3 -DORCA_NOC_WIDTH=2 -DORCA_EPOCH_LENGTH=2000000 -DNETBRIDGE_ENABLE_LOG_INPUT -DNETBRIDGE_ENABLE_LOG_OUTPUT -DNETSOCKET_CLIENT_ADDRESS=\"127.0.0.1\" -DNETSOCKET_CLIENT_PORT=8888 -DNETSOCKET_SERVER_ADDRESS=\"127.0.0.1\" -DNETSOCKET_SERVER_PORT=9999 -DBUFFER_CAPACITY=8 -DMEMORY_ENABLE_COUNTERS -DHFRISCV_ENABLE_COUNTERS -DROUTER_ENABLE_COUNTERS -Wall -Wextra -Werror -g -std=c++17 -O3 -march=native -mtune=native src/TimedModel.cpp -o bin/TimedModel.o 
+g++ -I./include -c  -DORCA_NOC_HEIGHT=3 -DORCA_NOC_WIDTH=2 -DORCA_EPOCH_LENGTH=2000000 -DNETBRIDGE_ENABLE_LOG_INPUT -DNETBRIDGE_ENABLE_LOG_OUTPUT -DNETSOCKET_CLIENT_ADDRESS=\"127.0.0.1\" -DNETSOCKET_CLIENT_PORT=8888 -DNETSOCKET_SERVER_ADDRESS=\"127.0.0.1\" -DNETSOCKET_SERVER_PORT=9999 -DBUFFER_CAPACITY=8 -DMEMORY_ENABLE_COUNTERS -DHFRISCV_ENABLE_COUNTERS -DROUTER_ENABLE_COUNTERS -Wall -Wextra -Werror -g -std=c++17 -O3 -march=native -mtune=native src/UntimedModel.cpp -o bin/UntimedModel.o 
+g++ -I./include -c  -DORCA_NOC_HEIGHT=3 -DORCA_NOC_WIDTH=2 -DORCA_EPOCH_LENGTH=2000000 -DNETBRIDGE_ENABLE_LOG_INPUT -DNETBRIDGE_ENABLE_LOG_OUTPUT -DNETSOCKET_CLIENT_ADDRESS=\"127.0.0.1\" -DNETSOCKET_CLIENT_PORT=8888 -DNETSOCKET_SERVER_ADDRESS=\"127.0.0.1\" -DNETSOCKET_SERVER_PORT=9999 -DBUFFER_CAPACITY=8 -DMEMORY_ENABLE_COUNTERS -DHFRISCV_ENABLE_COUNTERS -DROUTER_ENABLE_COUNTERS -Wall -Wextra -Werror -g -std=c++17 -O3 -march=native -mtune=native src/Simulator.cpp -o bin/Simulator.o 
+ar rcs ./bin/libsim.a  ./bin/Event.o ./bin/Model.o ./bin/TimedModel.o ./bin/UntimedModel.o ./bin/Simulator.o 
+make[1]: Leaving directory '/home/paulo/ursa_new/ursa/simulator'
+cp /home/paulo/ursa_new/ursa/simulator/bin/libsim.a /home/paulo/ursa_new/ursa/bin/libsim.a
+\e[7m==================================\e[0m
+\e[7m     Building hardware models     \e[0m
+\e[7m==================================\e[0m
+make -C /home/paulo/ursa_new/ursa/models -j 8
+make[1]: Entering directory '/home/paulo/ursa_new/ursa/models'
+g++ -I./include -I../simulator/include -c  -DORCA_NOC_HEIGHT=3 -DORCA_NOC_WIDTH=2 -DORCA_EPOCH_LENGTH=2000000 -DNETBRIDGE_ENABLE_LOG_INPUT -DNETBRIDGE_ENABLE_LOG_OUTPUT -DNETSOCKET_CLIENT_ADDRESS=\"127.0.0.1\" -DNETSOCKET_CLIENT_PORT=8888 -DNETSOCKET_SERVER_ADDRESS=\"127.0.0.1\" -DNETSOCKET_SERVER_PORT=9999 -DBUFFER_CAPACITY=8 -DMEMORY_ENABLE_COUNTERS -DHFRISCV_ENABLE_COUNTERS -DROUTER_ENABLE_COUNTERS -Wall -Wextra -Werror -g -std=c++17 -O3 -march=native -mtune=native src/TNetBridge.cpp -o bin/TNetBridge.o 
+g++ -I./include -I../simulator/include -c  -DORCA_NOC_HEIGHT=3 -DORCA_NOC_WIDTH=2 -DORCA_EPOCH_LENGTH=2000000 -DNETBRIDGE_ENABLE_LOG_INPUT -DNETBRIDGE_ENABLE_LOG_OUTPUT -DNETSOCKET_CLIENT_ADDRESS=\"127.0.0.1\" -DNETSOCKET_CLIENT_PORT=8888 -DNETSOCKET_SERVER_ADDRESS=\"127.0.0.1\" -DNETSOCKET_SERVER_PORT=9999 -DBUFFER_CAPACITY=8 -DMEMORY_ENABLE_COUNTERS -DHFRISCV_ENABLE_COUNTERS -DROUTER_ENABLE_COUNTERS -Wall -Wextra -Werror -g -std=c++17 -O3 -march=native -mtune=native src/USignal.cpp -o bin/USignal.o 
+g++ -I./include -I../simulator/include -c  -DORCA_NOC_HEIGHT=3 -DORCA_NOC_WIDTH=2 -DORCA_EPOCH_LENGTH=2000000 -DNETBRIDGE_ENABLE_LOG_INPUT -DNETBRIDGE_ENABLE_LOG_OUTPUT -DNETSOCKET_CLIENT_ADDRESS=\"127.0.0.1\" -DNETSOCKET_CLIENT_PORT=8888 -DNETSOCKET_SERVER_ADDRESS=\"127.0.0.1\" -DNETSOCKET_SERVER_PORT=9999 -DBUFFER_CAPACITY=8 -DMEMORY_ENABLE_COUNTERS -DHFRISCV_ENABLE_COUNTERS -DROUTER_ENABLE_COUNTERS -Wall -Wextra -Werror -g -std=c++17 -O3 -march=native -mtune=native src/UBuffer.cpp -o bin/UBuffer.o 
+g++ -I./include -I../simulator/include -c  -DORCA_NOC_HEIGHT=3 -DORCA_NOC_WIDTH=2 -DORCA_EPOCH_LENGTH=2000000 -DNETBRIDGE_ENABLE_LOG_INPUT -DNETBRIDGE_ENABLE_LOG_OUTPUT -DNETSOCKET_CLIENT_ADDRESS=\"127.0.0.1\" -DNETSOCKET_CLIENT_PORT=8888 -DNETSOCKET_SERVER_ADDRESS=\"127.0.0.1\" -DNETSOCKET_SERVER_PORT=9999 -DBUFFER_CAPACITY=8 -DMEMORY_ENABLE_COUNTERS -DHFRISCV_ENABLE_COUNTERS -DROUTER_ENABLE_COUNTERS -Wall -Wextra -Werror -g -std=c++17 -O3 -march=native -mtune=native src/UMemory.cpp -o bin/UMemory.o 
+g++ -I./include -I../simulator/include -c  -DORCA_NOC_HEIGHT=3 -DORCA_NOC_WIDTH=2 -DORCA_EPOCH_LENGTH=2000000 -DNETBRIDGE_ENABLE_LOG_INPUT -DNETBRIDGE_ENABLE_LOG_OUTPUT -DNETSOCKET_CLIENT_ADDRESS=\"127.0.0.1\" -DNETSOCKET_CLIENT_PORT=8888 -DNETSOCKET_SERVER_ADDRESS=\"127.0.0.1\" -DNETSOCKET_SERVER_PORT=9999 -DBUFFER_CAPACITY=8 -DMEMORY_ENABLE_COUNTERS -DHFRISCV_ENABLE_COUNTERS -DROUTER_ENABLE_COUNTERS -Wall -Wextra -Werror -g -std=c++17 -O3 -march=native -mtune=native src/TRouter.cpp -o bin/TRouter.o 
+g++ -I./include -I../simulator/include -c  -DORCA_NOC_HEIGHT=3 -DORCA_NOC_WIDTH=2 -DORCA_EPOCH_LENGTH=2000000 -DNETBRIDGE_ENABLE_LOG_INPUT -DNETBRIDGE_ENABLE_LOG_OUTPUT -DNETSOCKET_CLIENT_ADDRESS=\"127.0.0.1\" -DNETSOCKET_CLIENT_PORT=8888 -DNETSOCKET_SERVER_ADDRESS=\"127.0.0.1\" -DNETSOCKET_SERVER_PORT=9999 -DBUFFER_CAPACITY=8 -DMEMORY_ENABLE_COUNTERS -DHFRISCV_ENABLE_COUNTERS -DROUTER_ENABLE_COUNTERS -Wall -Wextra -Werror -g -std=c++17 -O3 -march=native -mtune=native src/THellfireProcessor.cpp -o bin/THellfireProcessor.o 
+g++ -I./include -I../simulator/include -c  -DORCA_NOC_HEIGHT=3 -DORCA_NOC_WIDTH=2 -DORCA_EPOCH_LENGTH=2000000 -DNETBRIDGE_ENABLE_LOG_INPUT -DNETBRIDGE_ENABLE_LOG_OUTPUT -DNETSOCKET_CLIENT_ADDRESS=\"127.0.0.1\" -DNETSOCKET_CLIENT_PORT=8888 -DNETSOCKET_SERVER_ADDRESS=\"127.0.0.1\" -DNETSOCKET_SERVER_PORT=9999 -DBUFFER_CAPACITY=8 -DMEMORY_ENABLE_COUNTERS -DHFRISCV_ENABLE_COUNTERS -DROUTER_ENABLE_COUNTERS -Wall -Wextra -Werror -g -std=c++17 -O3 -march=native -mtune=native src/TDmaNetif.cpp -o bin/TDmaNetif.o 
+Makefile:29: recipe for target 'bin/THellfireProcessor.o' failed
+make[1]: Leaving directory '/home/paulo/ursa_new/ursa/models'
+Makefile:50: recipe for target '/home/paulo/ursa_new/ursa/bin/libmod.a' failed

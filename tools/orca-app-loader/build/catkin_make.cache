@@ -1,0 +1,2 @@
+
+-DCATKIN_DEVEL_PREFIX=/home/paulo/ursa/tools/orca-app-loader/devel -DCMAKE_INSTALL_PREFIX=/home/paulo/ursa/tools/orca-app-loader/install -G Unix Makefiles
